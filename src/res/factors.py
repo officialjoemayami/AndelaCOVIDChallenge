@@ -1,4 +1,4 @@
-from res import converter as conv
+from src.res import converter as conv
 
 def factor(pt, tte, e, ep):
   if pt == 'days':

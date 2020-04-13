@@ -6,8 +6,8 @@ import json
 import dicttoxml # customer lib from a github repo [https://github.com/quandyfactory/dicttoxml]
 
 # import estimator
-from api.v1.on_covid_19 import COVID
-from res.log import LOG
+from src.api.v1.on_covid_19 import COVID
+from src.res.log import LOG
 
 
 # init app
@@ -86,7 +86,7 @@ class COVIDLogs(Resource):
     log = LOG(path)
     # log console with info log
     log.info()
-    with open('covid.log', 'r') as lf:
+    with open('src/covid.log', 'r') as lf:
       result = lf.read()
     res = make_response(result)
     res.headers['Covid-19'] = 'Covid-19'
@@ -100,5 +100,5 @@ api.add_resource(JSONOutput, '/api/v1/on-covid-19/json')
 api.add_resource(XMLOutput, '/api/v1/on-covid-19/xml')
 api.add_resource(COVIDLogs, '/api/v1/on-covid-19/logs')
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    estimator.run(debug=True)

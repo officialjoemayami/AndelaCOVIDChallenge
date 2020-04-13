@@ -1,7 +1,7 @@
 # import from res, custom function used for this project
-from res import factors as f
-from res import usd
-from res.output import OUTPUT
+from src.res import factors as f
+from src.res import usd
+from src.res.output import OUTPUT
 
 
 
