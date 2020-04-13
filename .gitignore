@@ -6,6 +6,9 @@
 # flake8 config
 setup.cfg
 
+# env
+myenv
+
 # node modules
 node_modules/
 
