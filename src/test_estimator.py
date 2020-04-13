@@ -2,7 +2,7 @@ from src.estimator import app
 import unittest
 import json
 
-test_data = {
+info = {
 "region": {
 "name": "Africa",
 "avgAge": 19.7,
@@ -21,6 +21,27 @@ class EstimatorTest(unittest.TestCase):
   def test_logs(self):
     tester = app.test_client(self)
     res = tester.get('/api/v1/on-covid-19/logs')
+    status = res.status_code
+    self.assertEqual(status, 200)
+  
+  # check default
+  def test_default(self):
+    tester = app.test_client(self)
+    res = tester.post('/api/v1/on-covid-19', data=json.dumps(info), headers={'Content-Type': 'application/json'})
+    status = res.status_code
+    self.assertEqual(status, 200)
+
+  # check json
+  def test_json(self):
+    tester = app.test_client(self)
+    res = tester.post('/api/v1/on-covid-19/json', data=json.dumps(info), headers={'Content-Type': 'application/json'})
+    status = res.status_code
+    self.assertEqual(status, 200)
+
+  # check xml
+  def test_xml(self):
+    tester = app.test_client(self)
+    res = tester.post('/api/v1/on-covid-19/xml', data=json.dumps(info), headers={'Content-Type': 'application/json'})
     status = res.status_code
     self.assertEqual(status, 200)
 
